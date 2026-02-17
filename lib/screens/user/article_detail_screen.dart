@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../../models/article.dart';
 import '../../providers/news_provider.dart';
 import '../../providers/language_provider.dart';
 import '../../utils/helpers.dart';
 import '../../utils/routes.dart';
+import '../../widgets/adaptive_image.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
   final Article article;
@@ -92,16 +92,9 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: widget.article.imageUrl,
+                  AdaptiveImage(
+                    imagePath: widget.article.imageUrl,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: theme.colorScheme.surfaceContainerHighest,
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      color: theme.colorScheme.surfaceContainerHighest,
-                      child: const Icon(Icons.image_not_supported, size: 40),
-                    ),
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -170,7 +163,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
                       CircleAvatar(
                         radius: 20,
                         backgroundImage:
-                            CachedNetworkImageProvider(widget.article.authorAvatar),
+                            AdaptiveImageProvider(widget.article.authorAvatar),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
@@ -339,7 +332,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
                           CircleAvatar(
                             radius: 16,
                             backgroundImage:
-                                CachedNetworkImageProvider(comment.userAvatar),
+                                AdaptiveImageProvider(comment.userAvatar),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
@@ -440,8 +433,8 @@ class _RelatedArticleCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: CachedNetworkImage(
-                imageUrl: article.imageUrl,
+              child: AdaptiveImage(
+                imagePath: article.imageUrl,
                 width: 80,
                 height: 80,
                 fit: BoxFit.cover,

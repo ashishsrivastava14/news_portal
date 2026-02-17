@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../models/article.dart';
 import '../../providers/news_provider.dart';
 import '../../utils/helpers.dart';
+import '../../widgets/adaptive_image.dart';
 
 class AdminCreateArticleScreen extends StatefulWidget {
   final Article? article;
@@ -156,12 +157,12 @@ class _AdminCreateArticleScreenState extends State<AdminCreateArticleScreen> {
               if (_imageUrlController.text.isNotEmpty)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    _imageUrlController.text,
+                  child: AdaptiveImage(
+                    imagePath: _imageUrlController.text,
                     height: 180,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
+                    errorWidget: Container(
                       height: 180,
                       color: theme.colorScheme.surfaceContainerHighest,
                       child: const Center(

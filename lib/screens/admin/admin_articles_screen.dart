@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../providers/news_provider.dart';
 import '../../utils/helpers.dart';
 import '../../utils/routes.dart';
+import '../../widgets/adaptive_image.dart';
 
 class AdminArticlesScreen extends StatefulWidget {
   const AdminArticlesScreen({super.key});
@@ -140,12 +141,12 @@ class _AdminArticlesScreenState extends State<AdminArticlesScreen> {
                     contentPadding: const EdgeInsets.all(12),
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        article.imageUrl,
+                      child: AdaptiveImage(
+                        imagePath: article.imageUrl,
                         width: 60,
                         height: 60,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => Container(
+                        errorWidget: Container(
                           width: 60,
                           height: 60,
                           color: theme.colorScheme.surfaceContainerHighest,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../models/article.dart';
 import '../providers/news_provider.dart';
 import '../providers/language_provider.dart';
 import '../utils/helpers.dart';
+import 'adaptive_image.dart';
 
 class NewsCard extends StatelessWidget {
   final Article article;
@@ -50,21 +50,11 @@ class NewsCard extends StatelessWidget {
               borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               child: Stack(
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: article.imageUrl,
+                  AdaptiveImage(
+                    imagePath: article.imageUrl,
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      height: 200,
-                      color: theme.colorScheme.surfaceContainerHighest,
-                      child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      height: 200,
-                      color: theme.colorScheme.surfaceContainerHighest,
-                      child: const Icon(Icons.image_not_supported, size: 40),
-                    ),
                   ),
                   if (article.isBreaking)
                     Positioned(
@@ -149,7 +139,7 @@ class NewsCard extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 12,
-                        backgroundImage: CachedNetworkImageProvider(article.authorAvatar),
+                        backgroundImage: AdaptiveImageProvider(article.authorAvatar),
                       ),
                       const SizedBox(width: 8),
                       Expanded(
@@ -199,22 +189,11 @@ class NewsCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: CachedNetworkImage(
-                imageUrl: article.imageUrl,
+              child: AdaptiveImage(
+                imagePath: article.imageUrl,
                 width: 100,
                 height: 100,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => Container(
-                  width: 100,
-                  height: 100,
-                  color: theme.colorScheme.surfaceContainerHighest,
-                ),
-                errorWidget: (context, url, error) => Container(
-                  width: 100,
-                  height: 100,
-                  color: theme.colorScheme.surfaceContainerHighest,
-                  child: const Icon(Icons.image_not_supported),
-                ),
               ),
             ),
             const SizedBox(width: 12),

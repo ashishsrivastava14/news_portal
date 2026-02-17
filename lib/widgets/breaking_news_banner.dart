@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../models/article.dart';
 import '../providers/language_provider.dart';
+import 'adaptive_image.dart';
 
 class BreakingNewsBanner extends StatefulWidget {
   final List<Article> articles;
@@ -121,16 +121,9 @@ class _BreakingNewsBannerState extends State<BreakingNewsBanner> {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        CachedNetworkImage(
-                          imageUrl: article.imageUrl,
+                        AdaptiveImage(
+                          imagePath: article.imageUrl,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) => Container(
-                            color: theme.colorScheme.surfaceContainerHighest,
-                          ),
-                          errorWidget: (context, url, error) => Container(
-                            color: theme.colorScheme.surfaceContainerHighest,
-                            child: const Icon(Icons.image_not_supported, size: 40),
-                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -184,7 +177,7 @@ class _BreakingNewsBannerState extends State<BreakingNewsBanner> {
                                 children: [
                                   CircleAvatar(
                                     radius: 10,
-                                    backgroundImage: CachedNetworkImageProvider(article.authorAvatar),
+                                    backgroundImage: AdaptiveImageProvider(article.authorAvatar),
                                   ),
                                   const SizedBox(width: 6),
                                   Text(

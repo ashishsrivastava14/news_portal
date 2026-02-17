@@ -5,6 +5,7 @@ import '../../providers/theme_provider.dart';
 import '../../providers/language_provider.dart';
 import '../../utils/routes.dart';
 import '../../widgets/language_selector.dart';
+import '../../widgets/adaptive_image.dart';
 import '../../l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -36,12 +37,12 @@ class ProfileScreen extends StatelessWidget {
                           theme.colorScheme.primary.withValues(alpha: 0.1),
                       child: user != null
                           ? ClipOval(
-                              child: Image.network(
-                                user.avatarUrl,
+                              child: AdaptiveImage(
+                                imagePath: user.avatarUrl,
                                 width: 90,
                                 height: 90,
                                 fit: BoxFit.cover,
-                                errorBuilder: (_, __, ___) => Icon(
+                                errorWidget: Icon(
                                   Icons.person,
                                   size: 45,
                                   color: theme.colorScheme.primary,
