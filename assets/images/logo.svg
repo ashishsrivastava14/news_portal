@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue Circle Background -->
+  <circle cx="100" cy="100" r="90" fill="#0099FF"/>
+  
+  <!-- Orange Curved Lines -->
+  <!-- Top curve -->
+  <ellipse cx="100" cy="60" rx="80" ry="15" fill="none" stroke="#FF6600" stroke-width="16"/>
+  
+  <!-- Middle curve -->
+  <ellipse cx="100" cy="90" rx="85" ry="18" fill="none" stroke="#FF6600" stroke-width="16"/>
+  
+  <!-- Bottom curve -->
+  <ellipse cx="100" cy="120" rx="90" ry="20" fill="none" stroke="#FF6600" stroke-width="16"/>
+</svg>
