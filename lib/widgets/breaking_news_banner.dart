@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 import '../models/article.dart';
+import '../providers/language_provider.dart';
 
 class BreakingNewsBanner extends StatefulWidget {
   final List<Article> articles;
@@ -49,6 +51,7 @@ class _BreakingNewsBannerState extends State<BreakingNewsBanner> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final languageCode = context.watch<LanguageProvider>().locale.languageCode;
 
     if (widget.articles.isEmpty) return const SizedBox.shrink();
 
@@ -166,7 +169,7 @@ class _BreakingNewsBannerState extends State<BreakingNewsBanner> {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                article.title,
+                                article.getTitle(languageCode),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(

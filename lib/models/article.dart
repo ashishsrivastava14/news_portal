@@ -15,6 +15,7 @@ class Article {
   final bool isBreaking;
   final bool isPublished;
   final List<String> tags;
+  final Map<String, ArticleTranslation>? translations;
 
   Article({
     required this.id,
@@ -33,7 +34,40 @@ class Article {
     this.isBreaking = false,
     this.isPublished = true,
     this.tags = const [],
+    this.translations,
   });
+
+  // Get localized title
+  String getTitle(String languageCode) {
+    if (translations != null && translations!.containsKey(languageCode)) {
+      return translations![languageCode]!.title;
+    }
+    return title;
+  }
+
+  // Get localized content
+  String getContent(String languageCode) {
+    if (translations != null && translations!.containsKey(languageCode)) {
+      return translations![languageCode]!.content;
+    }
+    return content;
+  }
+
+  // Get localized summary
+  String getSummary(String languageCode) {
+    if (translations != null && translations!.containsKey(languageCode)) {
+      return translations![languageCode]!.summary;
+    }
+    return summary;
+  }
+
+  // Get localized category name
+  String getCategoryName(String languageCode) {
+    if (translations != null && translations!.containsKey(languageCode)) {
+      return translations![languageCode]!.categoryName ?? categoryName;
+    }
+    return categoryName;
+  }
 
   Article copyWith({
     String? id,
@@ -52,6 +86,7 @@ class Article {
     bool? isBreaking,
     bool? isPublished,
     List<String>? tags,
+    Map<String, ArticleTranslation>? translations,
   }) {
     return Article(
       id: id ?? this.id,
@@ -70,6 +105,22 @@ class Article {
       isBreaking: isBreaking ?? this.isBreaking,
       isPublished: isPublished ?? this.isPublished,
       tags: tags ?? this.tags,
+      translations: translations ?? this.translations,
     );
   }
+}
+
+// Translation data for an article
+class ArticleTranslation {
+  final String title;
+  final String content;
+  final String summary;
+  final String? categoryName;
+
+  ArticleTranslation({
+    required this.title,
+    required this.content,
+    required this.summary,
+    this.categoryName,
+  });
 }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'models/article.dart';
 import 'providers/news_provider.dart';
 import 'providers/auth_provider.dart';
 import 'providers/theme_provider.dart';
+import 'providers/language_provider.dart';
 import 'utils/app_theme.dart';
 import 'utils/routes.dart';
+import 'l10n/app_localizations.dart';
 
 // Auth screens
 import 'screens/auth/splash_screen.dart';
@@ -48,12 +51,25 @@ class NewsPortalApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => NewsProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => LanguageProvider()),
       ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, _) {
+      child: Consumer2<ThemeProvider, LanguageProvider>(
+        builder: (context, themeProvider, languageProvider, _) {
           return MaterialApp(
             title: 'News Portal',
             debugShowCheckedModeBanner: false,
+            
+            // Localization
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: LanguageProvider.supportedLocales,
+            locale: languageProvider.locale,
+            
+            // Theme
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeProvider.themeMode,

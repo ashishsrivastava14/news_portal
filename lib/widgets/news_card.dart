@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../models/article.dart';
 import '../providers/news_provider.dart';
+import '../providers/language_provider.dart';
 import '../utils/helpers.dart';
 
 class NewsCard extends StatelessWidget {
@@ -20,11 +21,12 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    if (isCompact) return _buildCompactCard(context, theme);
-    return _buildFullCard(context, theme);
+    final languageCode = context.watch<LanguageProvider>().locale.languageCode;
+    if (isCompact) return _buildCompactCard(context, theme, languageCode);
+    return _buildFullCard(context, theme, languageCode);
   }
 
-  Widget _buildFullCard(BuildContext context, ThemeData theme) {
+  Widget _buildFullCard(BuildContext context, ThemeData theme, String languageCode) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -135,7 +137,7 @@ class NewsCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    article.title,
+                    article.getTitle(languageCode),
                     style: theme.textTheme.titleMedium?.copyWith(
                       height: 1.3,
                     ),
@@ -176,7 +178,7 @@ class NewsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCompactCard(BuildContext context, ThemeData theme) {
+  Widget _buildCompactCard(BuildContext context, ThemeData theme, String languageCode) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -255,7 +257,7 @@ class NewsCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    article.title,
+                    article.getTitle(languageCode),
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontSize: 14,
                       height: 1.3,

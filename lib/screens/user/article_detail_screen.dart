@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import '../../models/article.dart';
 import '../../providers/news_provider.dart';
+import '../../providers/language_provider.dart';
 import '../../utils/helpers.dart';
 import '../../utils/routes.dart';
 
@@ -29,6 +30,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final newsProvider = context.watch<NewsProvider>();
+    final languageCode = context.watch<LanguageProvider>().locale.languageCode;
     final isBookmarked = newsProvider.isBookmarked(widget.article.id);
     final comments = newsProvider.getCommentsForArticle(widget.article.id);
     final relatedArticles = newsProvider.getRelatedArticles(widget.article.id);
@@ -139,7 +141,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          widget.article.title,
+                          widget.article.getTitle(languageCode),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -268,7 +270,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
 
                   // Article content
                   Text(
-                    widget.article.summary,
+                    widget.article.getSummary(languageCode),
                     style: theme.textTheme.bodyLarge?.copyWith(
                       fontSize: _fontSize + 1,
                       fontWeight: FontWeight.w600,
@@ -277,7 +279,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    widget.article.content,
+                    widget.article.getContent(languageCode),
                     style: theme.textTheme.bodyLarge?.copyWith(
                       fontSize: _fontSize,
                       height: 1.8,

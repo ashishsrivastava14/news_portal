@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/theme_provider.dart';
+import '../../providers/language_provider.dart';
 import '../../utils/routes.dart';
+import '../../widgets/language_selector.dart';
+import '../../l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -12,6 +15,8 @@ class ProfileScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final auth = context.watch<AuthProvider>();
     final themeProvider = context.watch<ThemeProvider>();
+    final languageProvider = context.watch<LanguageProvider>();
+    final l10n = AppLocalizations.of(context)!;
     final user = auth.currentUser;
 
     return Scaffold(
@@ -123,14 +128,14 @@ class ProfileScreen extends StatelessWidget {
               // Language
               _SettingsTile(
                 icon: Icons.language,
-                title: 'Language',
-                subtitle: 'English',
+                title: l10n.language,
+                subtitle: languageProvider.getLanguageName(
+                  languageProvider.locale.languageCode,
+                ),
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Language settings coming soon'),
-                      behavior: SnackBarBehavior.floating,
-                    ),
+                  showDialog(
+                    context: context,
+                    builder: (context) => const LanguageSelector(),
                   );
                 },
               ),
