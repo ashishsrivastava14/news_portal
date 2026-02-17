@@ -254,7 +254,7 @@ class ProfileScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AboutDialog(
-        applicationName: 'News Portal',
+        applicationName: 'QuickPrepAI News',
         applicationVersion: '1.0.0',
         applicationIcon: Container(
           width: 50,

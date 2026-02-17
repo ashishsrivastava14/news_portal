@@ -56,7 +56,7 @@ class NewsPortalApp extends StatelessWidget {
       child: Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, themeProvider, languageProvider, _) {
           return MaterialApp(
-            title: 'News Portal',
+            title: 'QuickPrepAI News',
             debugShowCheckedModeBanner: false,
             
             // Localization

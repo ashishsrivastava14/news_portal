@@ -879,7 +879,7 @@ Looking ahead, the consensus among experts is cautiously optimistic. While chall
     AppNotification(id: 'n3', title: 'Tech Update', body: 'AI Breakthrough: New Model Achieves Human-Level Reasoning', type: 'article', createdAt: DateTime.now().subtract(const Duration(hours: 3)), articleId: '11'),
     AppNotification(id: 'n4', title: 'Health News', body: 'Breakthrough Cancer Treatment Shows 90% Success Rate', type: 'breaking', createdAt: DateTime.now().subtract(const Duration(hours: 3)), articleId: '24'),
     AppNotification(id: 'n5', title: 'Science Discovery', body: 'NASA Discovers Water on Distant Exoplanet', type: 'article', createdAt: DateTime.now().subtract(const Duration(hours: 5)), articleId: '28'),
-    AppNotification(id: 'n6', title: 'Welcome!', body: 'Welcome to News Portal! Customize your news feed preferences.', type: 'system', createdAt: DateTime.now().subtract(const Duration(days: 1))),
+    AppNotification(id: 'n6', title: 'Welcome!', body: 'Welcome to QuickPrepAI News! Customize your news feed preferences.', type: 'system', createdAt: DateTime.now().subtract(const Duration(days: 1))),
     AppNotification(id: 'n7', title: 'Weekly Digest', body: 'Your weekly news digest is ready. Tap to read the top stories.', type: 'system', createdAt: DateTime.now().subtract(const Duration(days: 2)), isRead: true),
     AppNotification(id: 'n8', title: 'New Category', body: 'Science category is now available! Explore the latest discoveries.', type: 'system', createdAt: DateTime.now().subtract(const Duration(days: 3)), isRead: true),
   ];

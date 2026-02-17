@@ -1,6 +1,6 @@
 # Multi-Language Support Setup
 
-This News Portal app now supports multiple languages including:
+This QuickPrepAI News app now supports multiple languages including:
 - English (en)
 - Hindi (hi) - हिंदी
 - Tamil (ta) - தமிழ்

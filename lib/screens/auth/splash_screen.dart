@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 const SizedBox(height: 24),
                 const Text(
-                  'News Portal',
+                  'QuickPrepAI News',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,

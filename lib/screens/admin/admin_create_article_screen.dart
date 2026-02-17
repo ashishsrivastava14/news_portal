@@ -84,7 +84,7 @@ class _AdminCreateArticleScreenState extends State<AdminCreateArticleScreen> {
       categoryName: category.name,
       authorName: 'Admin User',
       authorAvatar: 'https://i.pravatar.cc/150?img=70',
-      source: 'News Portal',
+      source: 'QuickPrepAI News',
       publishedAt: DateTime.now(),
       readTimeMinutes: (_contentController.text.length / 1000).ceil().clamp(1, 30),
       isPublished: asDraft ? false : _isPublished,

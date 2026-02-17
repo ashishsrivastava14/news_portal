@@ -79,7 +79,7 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'News Portal',
+                              'QuickPrepAI News',
                               style: theme.textTheme.titleLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),

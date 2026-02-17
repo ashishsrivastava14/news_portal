@@ -2,7 +2,7 @@
 
 ## ✅ What Has Been Implemented
 
-I've successfully added multi-language support to your News Portal app with the following languages:
+I've successfully added multi-language support to your QuickPrepAI News app with the following languages:
 - **English** (en)
 - **Hindi** (hi) - हिंदी
 - **Tamil** (ta) - தமிழ்
