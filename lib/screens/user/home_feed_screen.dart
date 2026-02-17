@@ -140,7 +140,7 @@ class _HomeFeedScreenState extends State<HomeFeedScreen> {
                             newsProvider.selectCategory(category.id);
                           },
                           labelStyle: TextStyle(
-                            color: isSelected ? Colors.white : null,
+                            color: isSelected ? Colors.white : Colors.black87,
                             fontWeight:
                                 isSelected ? FontWeight.w600 : FontWeight.w400,
                           ),
